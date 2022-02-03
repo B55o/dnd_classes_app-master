@@ -1,3 +1,4 @@
+import 'package:dnd_classes_app/defaults/defaults.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -34,8 +35,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
         ),
-        flexibleSpace: const Image(
-          image: AssetImage(r'lib\assets\photos\dnd-hermit.jpg'),
+        flexibleSpace: Image(
+          image: AssetImage(listOfBackgroundAssets[1]),
           fit: BoxFit.cover,
         ),
     );

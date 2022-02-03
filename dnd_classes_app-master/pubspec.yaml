@@ -68,6 +68,7 @@ flutter:
     - lib\assets\photos\Barbarian-Monk.jpg
     - lib\assets\photos\dragon.jfif
     - lib\assets\photos\smoke.jpg
+    - lib\assets\photos\app_bar_backg.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

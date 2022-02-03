@@ -5,7 +5,6 @@ import 'package:dnd_classes_app/widgets/custom_app_bar.dart';
 import 'package:dnd_classes_app/widgets/responsive_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 
 class HomeScreen extends StatelessWidget {

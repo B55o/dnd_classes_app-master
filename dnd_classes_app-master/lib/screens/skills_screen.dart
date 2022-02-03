@@ -29,7 +29,7 @@ class SpellsScreen extends StatelessWidget {
               itemBuilder: (context, index){
                 return GestureDetector(
                 onTap: () {
-                  //BlocProvider.of<AppCubit>(context).getSkillData(data[index].toString().toLowerCase().trim(), data[index]);
+                  
                 },
                 child: ResponsiveButton(
                   fontSize: 40,

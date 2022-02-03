@@ -1,5 +1,4 @@
 import 'package:dnd_classes_app/cubit/app_cubit.dart';
-import 'package:dnd_classes_app/model/skill_desc_model.dart';
 import 'package:dnd_classes_app/screens/home_screen.dart';
 import 'package:dnd_classes_app/screens/skill_desc.dart';
 import 'package:dnd_classes_app/screens/skills_screen.dart';
@@ -21,7 +20,6 @@ class _AppCubitLogicState extends State<AppCubitLogic> {
 
       body: BlocBuilder<AppCubit, AppState> (
         builder: (context, state){
-
           if (state is AppWelcomeState){
             return const WelcomeScreen();
 

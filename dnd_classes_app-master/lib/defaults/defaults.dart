@@ -17,7 +17,8 @@ List<String> listOfClassAssets = [
 ];
 List<String> listOfBackgroundAssets = [
   "lib\\assets\\photos\\dragon.jfif",
-  'lib\\assets\\photos\\smoke.jpg'
+  'lib\\assets\\photos\\smoke.jpg',
+  "lib\\assets\\photos\\app_bar_backg.jpg"
 ];
 
 List listOfIcons = [

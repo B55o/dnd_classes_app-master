@@ -21,7 +21,7 @@ class SkillDescription extends StatelessWidget {
           if (state is AppSkillState){
             var data = state.skill;
             return Column(
-                children: [ 
+                children: const [ 
                  Text( 
                    ''
                  ),

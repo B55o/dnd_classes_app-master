@@ -24,24 +24,6 @@ class DataServices {
     }
   }
 
-  Future getClassInf (classData) async {
-    try {
-      List generalClassInfo = [];
-      http.Response _res = await http.get(Uri.parse(_url+classData));
-      if (_res.statusCode == 200) {
-        Map<String, dynamic> _jsonResp = json.decode(_res.body);
-        var tempClassInf = SingleClass.fromJson(_jsonResp).proficiencyChoices![0].from;
-        for (int i=0; i < tempClassInf!.length; i++) {
-          generalClassInfo.add(tempClassInf[i].name!.substring(7));
-        }
-          return generalClassInfo;
-      }
-    }catch(e) {
-      print(e);
-      //return Container();
-    }
-  }
-
     Future getClassInfo (classData, checkedData) async {
     try {
       List<String?> generalClassInfo = [];
@@ -67,6 +49,7 @@ catch(e) {
       print(e);
       //return Container();
     }
+    
   }
 
   Future getSkillInfo(skillData) async {

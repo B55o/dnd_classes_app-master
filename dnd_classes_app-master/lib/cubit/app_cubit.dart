@@ -29,13 +29,9 @@ class AppCubit extends Cubit<AppState> {
   }
   void getClassData(classData, checkedData) async {
     try{
-      if (classesData.isEmpty) {
       emit(AppLoadingState());
       classesData = await data.getClassInfo(classData, checkedData);
       emit(AppClassesDetailsLoadedState(classesData));
-      }else {
-        emit(AppClassesDetailsLoadedState(classesData));
-      } 
     }catch(e) {
       print(e);
     }
