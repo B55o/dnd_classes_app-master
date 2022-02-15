@@ -6,19 +6,23 @@ class ResponsiveButton extends StatelessWidget {
   final double? width;
   final String buttonText;
   final double fontSize;
+  final double bottomMargin;
+  final double topMargin;
 
   const ResponsiveButton({
     Key? key,
     required this.fontSize,
     required this.width,
-    required this.buttonText}) : super(key: key);
+    required this.buttonText,
+    required this.bottomMargin,
+    required this.topMargin}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        top: 5,
-        bottom: 10,
+      margin: EdgeInsets.only(
+        top: topMargin,
+        bottom: bottomMargin,
       ),
       width: width,
       height: 60,

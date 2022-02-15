@@ -14,7 +14,7 @@ class SpellsScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return  Scaffold(
       appBar: CustomAppBar(
-        title: 'SKILLS',
+        title: 'CLASS DETAILS',
         onPressed: () {
           BlocProvider.of<AppCubit>(context).getData();
         }
@@ -31,11 +31,19 @@ class SpellsScreen extends StatelessWidget {
                 onTap: () {
                   
                 },
-                child: ResponsiveButton(
-                  fontSize: 40,
-                  buttonText: data[index],
-                  width: width*.9,
-                  ),
+                child: GestureDetector(
+                  onTap: () {
+                     BlocProvider.of<AppCubit>(context).getSkillData(data[index].toString().toLowerCase().trim());
+                  },
+                  child: ResponsiveButton(
+                    topMargin: 10.0,
+                    bottomMargin: 10.0,
+                    fontSize: 40,
+                    buttonText: data[index],
+                    width: width*.9,
+                    
+                    ),
+                ),
               );
               });
           } else {

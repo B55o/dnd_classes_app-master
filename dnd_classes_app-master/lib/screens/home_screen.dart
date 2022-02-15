@@ -28,48 +28,86 @@ class HomeScreen extends StatelessWidget {
                 return Column(
                   children: [
                     CardWidget(
-                      txt: data[index],               
+                      txt: '${data[index]}',               
                       imagePath: listOfClassAssets[index],
                     ),
                     Row(
-                children: [
-                  ButtonBar(
-                alignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      BlocProvider.of<AppCubit>(context).getClassData(data[index].toString().toLowerCase(), 'proficiency_choices');
-                    },
-                    child: ResponsiveButton(
-                      fontSize: 14.0,
-                      width: width*.3,
-                      buttonText: 'SKILL',
-                      ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      BlocProvider.of<AppCubit>(context).getClassData(data[index].toString().toLowerCase(), 'proficiencies');
-                    },
-                    child: ResponsiveButton(
-                      fontSize: 14.0,
-                      width: width*.3,
-                      buttonText: 'PROFICIENCIES',
-                      ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      BlocProvider.of<AppCubit>(context).getClassData(data[index].toString().toLowerCase(), 'saving_throws');
-                    },
-                    child: ResponsiveButton(
-                      fontSize: 14.0,
-                      width: width*.3,
-                      buttonText: 'SAVE THROWS',
-                      ),
-                  ),
-                ],
-              )
-                ],
-              ),
+                      children: [
+                        ButtonBar(
+                        alignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                        GestureDetector(
+                          onTap: () {
+                          BlocProvider.of<AppCubit>(context).getClassData(data[index].toString().toLowerCase(), 'proficiency_choices');
+                          },
+                          child: ResponsiveButton(
+                            topMargin: 5.0,
+                            bottomMargin: 1.0,
+                            fontSize: 14.0,
+                            width: width*.3,
+                            buttonText: 'SKILL',
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                          BlocProvider.of<AppCubit>(context).getClassData(data[index].toString().toLowerCase(), 'proficiencies');
+                          },
+                          child: ResponsiveButton(
+                            topMargin: 5.0,
+                            bottomMargin: 1.0,
+                            fontSize: 14.0,
+                            width: width*.3,
+                            buttonText: 'PROFICIENCIES',
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<AppCubit>(context).getClassData(data[index].toString().toLowerCase(), 'saving_throws');
+                          },
+                          child: ResponsiveButton(
+                            topMargin: 5.0,
+                            bottomMargin: 1.0,
+                            fontSize: 14.0,
+                            width: width*.3,
+                            buttonText: 'SAVE THROWS',
+                          ),
+                        ),
+                      ],
+                      )
+                      ],
+                    ),
+                        ButtonBar(
+                          alignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                BlocProvider.of<AppCubit>(context).getClassData(data[index].toString().toLowerCase(), 'starting_equipment_options');
+                              },
+                              child: ResponsiveButton(
+                                topMargin: 0,
+                                bottomMargin: 15.0,
+                                fontSize: 14.0,
+                                width: width*.3,
+                                buttonText: 'STARTING EQ',
+                                ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                BlocProvider.of<AppCubit>(context).getClassData(data[index].toString().toLowerCase(), 'proficiencies');
+                              },
+                              child: ResponsiveButton(
+                                topMargin: 0,
+                                bottomMargin: 15.0,
+                                fontSize: 14.0,
+                                width: width*.6,
+                                buttonText: 'STARTING EQ OPTIONS',
+                                ),
+                            ),
+                          ],
+                        ),
+                        const Divider(
+                          thickness: 10.0,
+                        ),
                   ],
                 );
               });
@@ -77,8 +115,7 @@ class HomeScreen extends StatelessWidget {
             return Container();
           }
         }
-        
-        ),
+      ),
     );
   }
 }

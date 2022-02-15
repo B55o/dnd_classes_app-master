@@ -30,6 +30,8 @@ class WelcomeScreen extends StatelessWidget {
                   BlocProvider.of<AppCubit>(context).getData();
                 },
                 child: const ResponsiveButton(
+                  topMargin: 0,
+                  bottomMargin: 0,
                   fontSize: 40,
                   buttonText: 'CLASSES',
                   width: 200,

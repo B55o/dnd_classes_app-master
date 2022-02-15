@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class DataServices {
-
   final _url = "https://www.dnd5eapi.co/api/classes/";
   
   Future getInfo () async {
@@ -35,11 +34,24 @@ class DataServices {
           for (int i=0; i < tempClassInfo!.length; i++) {
           generalClassInfo.add(tempClassInfo[i].name);
         }
-        return generalClassInfo;
-      } else if (checkedData == 'proficiency_choices') {
+          return generalClassInfo;
+        } else if (checkedData == 'proficiency_choices') {
         var tempClassInf = SingleClass.fromJson(_jsonResp).proficiencyChoices![0].from;
         for (int i=0; i < tempClassInf!.length; i++) {
           generalClassInfo.add(tempClassInf[i].name!.substring(7));
+        }
+        return generalClassInfo;
+      } else if (checkedData == 'saving_throws') {
+        var tempClassInf = SingleClass.fromJson(_jsonResp).savingThrows;
+        for (int i=0; i < tempClassInf!.length; i++) {
+          generalClassInfo.add(tempClassInf[i].name);
+        }
+        return generalClassInfo;
+      }
+      else if (checkedData == 'starting_equipment_options') {
+        var tempClassInf = SingleClass.fromJson(_jsonResp).startingEquipment;
+        for (int i=0; i < tempClassInf!.length; i++) {
+          generalClassInfo.add(tempClassInf[i].equipment!.name);
         }
         return generalClassInfo;
       }
@@ -52,13 +64,13 @@ catch(e) {
     
   }
 
-  Future getSkillInfo(skillData) async {
-
-    http.Response _res = await http.get(Uri.parse(_url+skillData));
+  Future getSkillInfo(String skillData) async {
+    String finalData = skillData.replaceFirst(' ', '-');
+    http.Response _res = await http.get(Uri.parse(_url+'skill/'+finalData));
     try {
     if (_res.statusCode == 200) {
       Map<String, dynamic> _jsonResp = json.decode(_res.body);
-      var skillInfo = SkillDescModel.fromJson(_jsonResp).name.toString();
+      var skillInfo = SkillDescModel.fromJson(_jsonResp).desc;
       return skillInfo;
     }
   }catch(e){

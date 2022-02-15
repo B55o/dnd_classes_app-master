@@ -11,7 +11,7 @@ class AppCubit extends Cubit<AppState> {
   final DataServices data;
   late List classes = [];
   late List classesData = [];
-  late String skillsData = '';
+  late String sData = '';
   late String checkedData = '';
 
   void getData() async {
@@ -32,6 +32,16 @@ class AppCubit extends Cubit<AppState> {
       emit(AppLoadingState());
       classesData = await data.getClassInfo(classData, checkedData);
       emit(AppClassesDetailsLoadedState(classesData));
+    }catch(e) {
+      print(e);
+    }
+  }
+
+  void getSkillData(skillsData) async {
+    try{
+      emit(AppLoadingState());
+      sData = await data.getSkillInfo(skillsData);
+      emit(AppSkillState(sData));
     }catch(e) {
       print(e);
     }

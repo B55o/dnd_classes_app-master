@@ -3,8 +3,8 @@ class SingleClass {
   String? name;
   int? hitDie;
   List<ProficiencyChoices>? proficiencyChoices;
-  List<Proficiencies>? proficiencies;
-  List? savingThrows;
+  List<From>? proficiencies;
+  List<From>? savingThrows;
   List<StartingEquipment>? startingEquipment;
   List? startingEquipmentOptions;
   String? classLevels;
@@ -39,40 +39,26 @@ class SingleClass {
     if (json['proficiencies'] != null) {
       proficiencies = [];
       json['proficiencies'].forEach((v) {
-        proficiencies!.add(Proficiencies.fromJson(v));
+        proficiencies!.add(From.fromJson(v));
       });
     }
     if (json['saving_throws'] != null) {
       savingThrows = [];
       json['saving_throws'].forEach((v) {
-        savingThrows!.add(SingleClass.fromJson(v));
+        savingThrows!.add(From.fromJson(v));
       });
+    }
+    if (subclasses != null) {
+      json['subclasses'] = subclasses!.map((v) => v.toJson()).toList();
     }
     if (json['starting_equipment'] != null) {
       startingEquipment = <StartingEquipment>[];
       json['starting_equipment'].forEach((v) {
         startingEquipment!.add(StartingEquipment.fromJson(v));
       });
-    }
-    if (json['starting_equipment_options'] != null) {
-      startingEquipmentOptions = [];
-      json['starting_equipment_options'].forEach((v) {
-        startingEquipmentOptions!.add(SingleClass.fromJson(v));
-      });
-    }
-    classLevels = json['class_levels'];
-    multiClassing = json['multi_classing'] != null
-        ? MultiClassing.fromJson(json['multi_classing'])
-        : null;
-    if (json['subclasses'] != null) {
-      subclasses = [];
-      json['subclasses'].forEach((v) {
-        subclasses!.add(SingleClass.fromJson(v));
-      });
-    }
+    } 
     url = json['url'];
   }
-
 }
 
 class ProficiencyChoices {
@@ -94,15 +80,15 @@ class ProficiencyChoices {
   }
 }
 
-class Proficiencies {
+class From {
   String? index;
   String? name;
   String? url;
 
-  Proficiencies({this.index, this.name, this.url});
+  From({this.index, this.name, this.url});
   
-  factory Proficiencies.fromJson(Map<String, dynamic> json) {
-    return Proficiencies(
+  factory From.fromJson(Map<String, dynamic> json) {
+    return From(
     index: json['index'],
     name: json['name'],
     url: json['url'],
@@ -110,19 +96,6 @@ class Proficiencies {
   }
 }
 
-class From {
-  String? index;
-  String? name;
-  String? url;
-
-  From({this.index, this.name, this.url});
-
-  From.fromJson(Map<String, dynamic> json) {
-    index = json['index'];
-    name = json['name'];
-    url = json['url'];
-  }
-}
 
 class StartingEquipment {
   From? equipment;
@@ -131,28 +104,12 @@ class StartingEquipment {
   StartingEquipment({this.equipment, this.quantity});
 
   StartingEquipment.fromJson(Map<String, dynamic> json) {
-    equipment =
-        json['equipment'] != null ? From.fromJson(json['equipment']) : null;
+    equipment = json['equipment'] != null 
+      ? From.fromJson(json['equipment']) : null;
     quantity = json['quantity'];
   }
 }
 
-class From1 {
-  From1? equipment;
-  int? quantity;
-  EquipmentOption? equipmentOption;
-
-  From1({this.equipment, this.quantity, this.equipmentOption});
-
-  From1.fromJson(Map<String, dynamic> json) {
-    equipment =
-        json['equipment'] != null ? From1.fromJson(json['equipment']) : null;
-    quantity = json['quantity'];
-    equipmentOption = json['equipment_option'] != null
-        ? EquipmentOption.fromJson(json['equipment_option'])
-        : null;
-  }
-}
 
 class EquipmentOption {
   int? choose;
